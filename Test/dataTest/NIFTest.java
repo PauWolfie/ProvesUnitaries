@@ -43,7 +43,7 @@ public class NIFTest {
          exception2 -> cas 2
          exception3 -> cas 3
          */
-        
+
         Throwable exception1 = assertThrows(WrongFormedNIFException.class,
                 () -> {
                     Nif nif = new Nif("48052867WWW");
