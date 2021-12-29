@@ -1,7 +1,7 @@
 package data;
 
 public class Password {
-    // The accreditation number of the SS
+    // Password to autenticate
     private final String pswd;
 
     public Password(String pswd) {

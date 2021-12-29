@@ -1,16 +1,30 @@
 package data;
 
-import javax.print.Doc;
+import exceptions.EmptyException;
+import exceptions.WrongFormedException;
+
+import java.io.File;
 
 /**
  * Essential data classes
  */
 public class DocPath {
-    // The accreditation number of the SS
+    // Path with the actual doc
     private final String path;
 
-    public DocPath(String Docpath) {
-        this.path = Docpath;
+    public DocPath(String docpath) throws EmptyException, WrongFormedException {
+        if (docpath == null){
+            throw new NullPointerException("Null reference");
+        }
+        if (docpath.isEmpty()){
+            throw new EmptyException("El directori no pot estar buit");
+        }
+
+        File file = new File(docpath);
+        if (!file.exists()) {
+            throw new WrongFormedException("El directori no existeix");
+        }
+        this.path = docpath;
     }
 
     public String getPath() {

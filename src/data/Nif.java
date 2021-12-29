@@ -11,19 +11,17 @@ final public class Nif {
     private final String nif;
 
     public Nif(String code) throws WrongFormedException, EmptyException {
-        if (code == null){
+        if (code == null) {
             throw new NullPointerException("Null reference");
         }
         if (code.isEmpty()) {
             throw new EmptyException("El NIF no pot estar buit");
         }
-        if (!isValid(code)) {
-            throw new WrongFormedException("L'últim caràcter ha de ser una lletra");
-        }
+        checkValid(code);
         this.nif = code;
     }
 
-    private boolean isValid(String code) throws WrongFormedException {
+    private void checkValid(String code) throws WrongFormedException {
         if (code.length() != 9) {
             throw new WrongFormedException("El NIF ha de tenir 8 caràcters");
         }
@@ -32,7 +30,9 @@ final public class Nif {
                 throw new WrongFormedException("Els 7 primers caràcters han de ser nombres");
             }
         }
-        return Character.isLetter(code.charAt(8));
+        if (!Character.isLetter(code.charAt(8))) {
+            throw new WrongFormedException("L'últim caràcter ha de ser una lletra");
+        }
     }
 
     public String getNif() {
