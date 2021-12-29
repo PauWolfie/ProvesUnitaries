@@ -1,0 +1,4 @@
+Pkg Data:
+    DocPath -> una ruta: comprovar excepcions i realitzar testos
+    AccredNumb -> el número de afiliación a la SS: comprovar excepcions i realitzar testos
+    Password -> contrassenya autenticació: comprovar excepcions i realitzar testos

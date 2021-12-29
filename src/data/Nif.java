@@ -1,7 +1,7 @@
 package data;
 
-import exceptions.dataExceptions.EmptyNIFException;
-import exceptions.dataExceptions.WrongFormedNIFException;
+import exceptions.EmptyException;
+import exceptions.WrongFormedException;
 
 /**
  * Essential data classes
@@ -10,26 +10,26 @@ final public class Nif {
     // The tax identification number in the Spanish state.
     private final String nif;
 
-    public Nif(String code) throws WrongFormedNIFException, EmptyNIFException {
+    public Nif(String code) throws WrongFormedException, EmptyException {
         if (code == null){
             throw new NullPointerException("Null reference");
         }
         if (code.isEmpty()) {
-            throw new EmptyNIFException();
+            throw new EmptyException("El NIF no pot estar buit");
         }
         if (!isValid(code)) {
-            throw new WrongFormedNIFException("L'últim caràcter ha de ser una lletra");
+            throw new WrongFormedException("L'últim caràcter ha de ser una lletra");
         }
         this.nif = code;
     }
 
-    private boolean isValid(String code) throws WrongFormedNIFException {
+    private boolean isValid(String code) throws WrongFormedException {
         if (code.length() != 9) {
-            throw new WrongFormedNIFException("El NIF ha de tenir 8 caràcters");
+            throw new WrongFormedException("El NIF ha de tenir 8 caràcters");
         }
         for (int i = 0; i < 8; i++) {
             if (!Character.isDigit(code.charAt(i))) {
-                throw new WrongFormedNIFException("Els 7 primers caràcters han de ser nombres");
+                throw new WrongFormedException("Els 7 primers caràcters han de ser nombres");
             }
         }
         return Character.isLetter(code.charAt(8));
