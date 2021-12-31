@@ -1,7 +1,7 @@
 package data;
 
-import exceptions.EmptyException;
-import exceptions.WrongFormedException;
+import exceptions.dataExceptions.EmptyException;
+import exceptions.dataExceptions.WrongFormedException;
 
 /**
  * Essential data classes

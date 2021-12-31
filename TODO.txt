@@ -1,2 +1,0 @@
-Pkg Data:
-    Password -> contrassenya autenticació: comprovar excepcions i realitzar testos

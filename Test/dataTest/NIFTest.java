@@ -1,26 +1,20 @@
 package dataTest;
 
 import data.Nif;
-import exceptions.EmptyException;
-import exceptions.WrongFormedException;
+import exceptions.dataExceptions.EmptyException;
+import exceptions.dataExceptions.WrongFormedException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class NIFTest implements dataTestInterface {
 
-    /**
-     * Comprova la correcta implementació per al cas on les dades introduides són correctes
-     */
     @Test
     public void correctTest() throws WrongFormedException, EmptyException {
         Nif nif = new Nif("48052867W");
         assertEquals("48052867W", nif.getNif());
     }
 
-    /**
-     * Comprova la correcta execució de les excepcions en el cas que la referència passada sigui nul·la o no contingui res.
-     **/
     @Test
     public void emptyTest() {
         Throwable exception1 = assertThrows(EmptyException.class,
@@ -36,12 +30,6 @@ public class NIFTest implements dataTestInterface {
         assertEquals("Null reference", exception2.getMessage());
     }
 
-    /**
-     * Comprova la correcta execució de les excepcions en els casos que el DNI estigui mal format:
-     *  -Cas 1: El NIF no té 8 caràcters.
-     *  -Cas 2: Els 7 primers caràcters del NIF no son nombres.
-     *  -Cas 3: L'últim caràcter del NIF ha de ser una lletra.
-     */
     @Test
     public void wrongFormatTest() {
         Throwable exception1 = assertThrows(WrongFormedException.class,
@@ -62,9 +50,6 @@ public class NIFTest implements dataTestInterface {
         assertEquals("L'últim caràcter ha de ser una lletra", exception3.getMessage());
     }
 
-    /**
-     * Comprova la correcta execució del mètode equals.
-     */
     @Test
     public void compareTest() throws WrongFormedException, EmptyException {
         Nif nif1 = new Nif("48052867W");

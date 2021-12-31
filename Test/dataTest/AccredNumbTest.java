@@ -1,27 +1,21 @@
 package dataTest;
 
 import data.AccredNumb;
-import data.Nif;
-import exceptions.EmptyException;
-import exceptions.WrongFormedException;
+import exceptions.dataExceptions.EmptyException;
+import exceptions.dataExceptions.WrongFormedException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class AccredNumbTest implements dataTestInterface{
-    /**
-     * Comprova la correcta implementació per al cas on les dades introduides són correctes
-     */
+
     @Test
     public void correctTest() throws WrongFormedException, EmptyException {
         AccredNumb num = new AccredNumb("LLRO0123456789");
         assertEquals("LLRO0123456789",num.getAccNum());
     }
 
-    /**
-     * Comprova la correcta execució de les excepcions en el cas que la referència passada sigui nul·la o no contingui res.
-     **/
     @Override
     public void emptyTest() {
         Throwable exception1 = assertThrows(EmptyException.class,
@@ -37,12 +31,6 @@ public class AccredNumbTest implements dataTestInterface{
         assertEquals("Null reference", exception2.getMessage());
     }
 
-    /**
-     * Comprova la correcta execució de les excepcions en els casos que el nombre d'acreditació estigui mal format:
-     *  -Cas 1: El nombre no té 14 caràcters.
-     *  -Cas 2: Els 4 primers caràcters no son lletres.
-     *  -Cas 3: Els 10 següents caràcters no son nombres.
-     */
     @Test
     public void wrongFormatTest() {
         Throwable exception1 = assertThrows(WrongFormedException.class,
@@ -63,9 +51,6 @@ public class AccredNumbTest implements dataTestInterface{
         assertEquals("Els 10 últims caràcters han de ser nombres", exception3.getMessage());
     }
 
-    /**
-     * Comprova la correcta execució del mètode equals.
-     */
     @Test
     public void compareTest() throws WrongFormedException, EmptyException {
         AccredNumb num1 = new AccredNumb("LLRO0123456789");

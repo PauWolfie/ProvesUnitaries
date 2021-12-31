@@ -1,10 +1,22 @@
 package data;
 
+import exceptions.dataExceptions.EmptyException;
+import exceptions.dataExceptions.WrongFormedException;
+
 public class Password {
     // Password to autenticate
     private final String pswd;
 
-    public Password(String pswd) {
+    public Password(String pswd) throws EmptyException, WrongFormedException {
+        if (pswd == null) {
+            throw new NullPointerException("Null reference");
+        }
+        if (pswd.isEmpty()) {
+            throw new EmptyException("La contrassenya no pot estar buida");
+        }
+        if(pswd.length() < 8){
+            throw new WrongFormedException("La contrassenya ha de tenir al menys 8 caràcters");
+        }
         this.pswd = pswd;
     }
 
