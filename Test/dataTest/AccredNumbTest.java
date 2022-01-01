@@ -1,14 +1,14 @@
 package dataTest;
 
 import data.AccredNumb;
-import exceptions.dataExceptions.EmptyException;
-import exceptions.dataExceptions.WrongFormedException;
+import data.exceptions.EmptyException;
+import data.exceptions.WrongFormedException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-public class AccredNumbTest implements dataTestInterface{
+public class AccredNumbTest implements DataTestInterface {
 
     @Test
     public void correctTest() throws WrongFormedException, EmptyException {

@@ -1,4 +1,4 @@
-package exceptions.servicesExceptions;
+package services.exceptions;
 
 public class NotValidPINException extends Exception {
     public NotValidPINException(String s) {super(s);}

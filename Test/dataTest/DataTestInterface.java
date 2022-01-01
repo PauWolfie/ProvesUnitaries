@@ -1,11 +1,11 @@
 package dataTest;
 
-import exceptions.dataExceptions.EmptyException;
-import exceptions.dataExceptions.WrongFormedException;
+import data.exceptions.EmptyException;
+import data.exceptions.WrongFormedException;
 import org.junit.jupiter.api.Test;
 
 
-public interface dataTestInterface {
+public interface DataTestInterface {
     /**
      * Comprova la correcta implementació per al cas on les dades introduides són correctes
      */

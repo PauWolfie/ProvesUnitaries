@@ -1,7 +1,7 @@
 package data;
 
-import exceptions.dataExceptions.EmptyException;
-import exceptions.dataExceptions.WrongFormedException;
+import data.exceptions.EmptyException;
+import data.exceptions.WrongFormedException;
 
 import java.io.File;
 

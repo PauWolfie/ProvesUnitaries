@@ -1,13 +1,13 @@
 package dataTest;
 
 import data.Nif;
-import exceptions.dataExceptions.EmptyException;
-import exceptions.dataExceptions.WrongFormedException;
+import data.exceptions.EmptyException;
+import data.exceptions.WrongFormedException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class NIFTest implements dataTestInterface {
+public class NIFTest implements DataTestInterface {
 
     @Test
     public void correctTest() throws WrongFormedException, EmptyException {

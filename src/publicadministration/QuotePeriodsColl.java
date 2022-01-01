@@ -1,23 +1,41 @@
 package publicadministration;
 
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
-public class QuotePeriodsColl { // Represents the total quote periods known as a registered worker
-    // Its components, that is, the set of quote periods
+public class QuotePeriodsColl {
+    List<QuotePeriod> quotePeriods;
 
-    public QuotePeriodsColl (){
-        // Initializes the object
+    public QuotePeriodsColl() {
+        quotePeriods = new LinkedList<>();
     }
 
-    // the getters
-
-    public void addQuotePeriod (QuotePeriod qPd){
-        // Adds a quote period, always respecting the sorting by date, from oldest to later in time
+    public List<QuotePeriod> getQuotePeriods() {
+        return quotePeriods;
     }
 
-    public String toString () {
+    public void addQuotePeriod(QuotePeriod qPd) {
+        quotePeriods.set(getQuoteIndex(qPd), qPd);
+    }
+
+    private int getQuoteIndex(QuotePeriod qPd) {
+        if (quotePeriods.isEmpty()) {
+            return 0;
+        }
+        int idx = quotePeriods.size();
+        Date initDate = qPd.getInitDay();
+        Date dateToCheck = quotePeriods.get(idx - 1).getInitDay();
+        while (initDate.compareTo(dateToCheck) < 0) {
+            idx--;
+            dateToCheck = quotePeriods.get(idx).getInitDay();
+        }
+        return idx;
+    }
+
+    public String toString() {
         // Converts to String
-        return null;
+        return "Total Quote Periods{" + "El número de cotizaciones es de='" + quotePeriods.size() + '\'' + '}';
     }
 }
 

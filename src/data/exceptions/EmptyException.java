@@ -1,4 +1,4 @@
-package exceptions.dataExceptions;
+package data.exceptions;
 
 public class EmptyException extends Exception{
     public EmptyException(String s) {

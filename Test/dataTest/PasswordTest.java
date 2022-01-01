@@ -1,14 +1,14 @@
 package dataTest;
 
 import data.Password;
-import exceptions.dataExceptions.EmptyException;
-import exceptions.dataExceptions.WrongFormedException;
+import data.exceptions.EmptyException;
+import data.exceptions.WrongFormedException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-public class PasswordTest implements dataTestInterface {
+public class PasswordTest implements DataTestInterface {
 
 
     @Test

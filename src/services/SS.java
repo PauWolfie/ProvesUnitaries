@@ -3,7 +3,7 @@ package services;
 import SSdocs.LaboralLifeDoc;
 import SSdocs.MemberAccreditationDoc;
 import data.Nif;
-import exceptions.servicesExceptions.NotAffiliatedException;
+import services.exceptions.NotAffiliatedException;
 
 import java.net.ConnectException;
 

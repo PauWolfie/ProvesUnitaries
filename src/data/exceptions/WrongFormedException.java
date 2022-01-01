@@ -1,4 +1,4 @@
-package exceptions.dataExceptions;
+package data.exceptions;
 
 public class WrongFormedException extends Exception{
     public WrongFormedException(String s) {
