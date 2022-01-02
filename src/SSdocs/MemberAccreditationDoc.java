@@ -20,4 +20,6 @@ public class MemberAccreditationDoc extends PDFDocument {
     public AccredNumb getNumAffil() {
         return numAffil;
     }
+
+    //Això és una prova
 }
