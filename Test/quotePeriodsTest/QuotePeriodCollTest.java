@@ -1,5 +1,6 @@
 package quotePeriodsTest;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import publicadministration.QuotePeriod;
 import publicadministration.QuotePeriodsColl;
@@ -11,10 +12,14 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class QuotePeriodCollTest implements QuotePeriodTestInterface {
+    QuotePeriodsColl qpColl;
+
+    @BeforeEach
+    void setQpColl(){
+        qpColl = new QuotePeriodsColl();
+    }
     @Test
     public void correctTest() throws IncorrectValDaysException {
-        QuotePeriodsColl qpColl = new QuotePeriodsColl();
-
         for (int i = 0; i < MAX; i++) {
             qpColl.addQuotePeriod(new QuotePeriod(new Date(MAX - i, 1, 1), nDays));
         }
@@ -30,8 +35,6 @@ public class QuotePeriodCollTest implements QuotePeriodTestInterface {
 
     @Test
     public void emptyTest() {
-        QuotePeriodsColl qpColl = new QuotePeriodsColl();
-
         Throwable exception1 = assertThrows(NullPointerException.class,
                 () -> {
                     qpColl.addQuotePeriod(null);
