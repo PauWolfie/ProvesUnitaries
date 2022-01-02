@@ -16,7 +16,10 @@ public class QuotePeriodsColl {
     }
 
     public void addQuotePeriod(QuotePeriod qPd) {
-        quotePeriods.set(getQuoteIndex(qPd), qPd);
+        if(qPd == null){
+            throw new NullPointerException("Periode de cotització no vàlid");
+        }
+        quotePeriods.add(getQuoteIndex(qPd), qPd);
     }
 
     private int getQuoteIndex(QuotePeriod qPd) {
@@ -24,9 +27,9 @@ public class QuotePeriodsColl {
             return 0;
         }
         int idx = quotePeriods.size();
-        Date initDate = qPd.getInitDay();
+        Date dateToAdd = qPd.getInitDay();
         Date dateToCheck = quotePeriods.get(idx - 1).getInitDay();
-        while (initDate.compareTo(dateToCheck) < 0) {
+        while (idx != 0 && dateToAdd.compareTo(dateToCheck) < 0) {
             idx--;
             dateToCheck = quotePeriods.get(idx).getInitDay();
         }

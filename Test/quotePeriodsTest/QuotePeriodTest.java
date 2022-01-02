@@ -4,14 +4,9 @@ import org.junit.jupiter.api.Test;
 import publicadministration.QuotePeriod;
 import publicadministration.exceptions.IncorrectValDaysException;
 
-import java.util.Date;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-public class quotePeriodTest implements QuotePeriodTestInterface{
-    Date initDate = new Date(2022,1,1);
-    int nDays = 365;
-
+public class QuotePeriodTest implements QuotePeriodTestInterface{
     @Test
     public void correctTest() throws IncorrectValDaysException {
         QuotePeriod qp = new QuotePeriod(initDate,nDays);
