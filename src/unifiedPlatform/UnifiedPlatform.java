@@ -102,9 +102,66 @@ public class UnifiedPlatform {
 
 
     // Other operations
-    private String searchKeyWords(String keyWord) throws
-            AnyKeyWordProcedureException {
-        return null;
+    public String searchKeyWords(String keyWord) throws AnyKeyWordProcedureException {
+        String[][] tramits = {
+                {"Solicitar informe vida laboral", "Obtener acreditación número afiliación Seguridad Social"},
+                {"Obtener datos fiscales", "Tramitar borrador declaración renta"},
+                {"Solicitar certificado nacimiento"},
+                {"Consultar puntos asociados carnet conducir"}
+        };
+        double[] similarity_idx = new double[4];
+
+        for (int i = 0; i < aapps.length; i++) {
+            for (int j = 0; j < tramits[i].length; j++) {
+                double foo = similarity(tramits[i][j], keyWord);
+                if (similarity_idx[i] < foo) {
+                    similarity_idx[i] = foo;
+                }
+            }
+        }
+
+        int aappIDx = 0;
+        double similarityIdx = 0;
+        for (int i = 0; i < similarity_idx.length; i++) {
+            if (similarity_idx[i] > similarityIdx) {
+                similarityIdx = similarity_idx[i];
+                aappIDx = i;
+            }
+        }
+
+        if (similarityIdx < 0.24) {
+            return null;
+        }
+
+        return aapps[aappIDx];
+    }
+
+    public static double similarity(String s1, String s2) {
+        if (s1.length() < s2.length()) { // s1 should always be bigger
+            String swap = s1; s1 = s2; s2 = swap; }
+        int bigLen = s1.length(); if (bigLen == 0) {
+            return 1.0; /* both strings are zero length */ }
+        return (bigLen - computeEditDistance(s1, s2)) / (double) bigLen;
+    }
+
+    public static int computeEditDistance(String s1, String s2) {
+        s1 = s1.toLowerCase();
+        s2 = s2.toLowerCase();
+        int[] costs = new int[s2.length() + 1];
+        for (int i = 0; i <= s1.length(); i++) {
+            int lastValue = i;
+            for (int j = 0; j <= s2.length(); j++) {
+                if (i == 0) costs[j] = j;
+                else {
+                    if (j > 0) {
+                        int newValue = costs[j - 1];
+                        if (s1.charAt(i - 1) != s2.charAt(j - 1)) newValue = Math.min(Math.min(newValue, lastValue), costs[j]) + 1;
+                        costs[j - 1] = lastValue; lastValue = newValue;
+                    }
+                }
+            }
+            if (i > 0) costs[s2.length()] = lastValue;
+        } return costs[s2.length()];
     }
 
     private void OpenDocument(DocPath path) throws BadPathException {
