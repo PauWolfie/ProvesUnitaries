@@ -14,10 +14,10 @@ public class PDFDocument {
     private DocPath path;
     private File file;
 
-    public PDFDocument () throws EmptyException, WrongFormedException {
-        creatDate = Date.from(Instant.now());
-        path = new DocPath("EmulatedDirectory/");
-        file = new File("defaultFilename.pdf");
+    public PDFDocument (Date date, DocPath path, File file) throws EmptyException, WrongFormedException {
+        this.creatDate = date;
+        this.path = path;
+        this.file = file;
     }
 
     public Date getCreatDate() {

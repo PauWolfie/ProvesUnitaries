@@ -12,11 +12,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PDFDocumentTest {
     PDFDocument doc;
 
-    @BeforeEach
-    void setDoc() throws EmptyException, WrongFormedException {
-        doc = new PDFDocument();
-    }
-
     @Test
     void toStringTest() {
         assertEquals(Date.from(Instant.now()),doc.toString());
