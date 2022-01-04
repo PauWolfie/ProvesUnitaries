@@ -147,8 +147,9 @@ public class UnifiedPlatform {
                     StringTokenizer tramits_tk = new StringTokenizer(tramits[i][j]);
                     while (tramits_tk.hasMoreTokens()) {
                         double percentage = similarity(keyword, tramits_tk.nextToken());
-                        if (percentage > max_similarity[i]) {
-                            max_similarity[i] = percentage;
+                        if (percentage > maximum) {
+                            maximum = percentage;
+                            indexOfAAPP = i;
                         }
                     }
                 }
@@ -169,9 +170,6 @@ public class UnifiedPlatform {
         }
 
         return aapps[indexOfAAPP];
-
-         */
-    return null;
     }
 
     public static double similarity(String s1, String s2) {
