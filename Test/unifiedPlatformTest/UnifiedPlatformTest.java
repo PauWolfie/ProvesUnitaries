@@ -56,6 +56,8 @@ public class UnifiedPlatformTest {
                 });
 
         assertEquals("Error al enviar pin", exception.getMessage());
+        assertEquals("Error al enviar pin", exception.getMessage());
+        assertEquals("Error al enviar pin", exception.getMessage());
     }
 
 }
