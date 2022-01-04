@@ -21,21 +21,20 @@ public class CertificationAuthoriryDoble implements CertificationAuthority {
     Date date;
 
     public CertificationAuthoriryDoble() throws EmptyException, WrongFormedException {
-        this.date = new Date();
-        this.pass = new Password("anypasswd");
+        date = new Date();
+        pass = new Password("anypasswd");
 
-        this.nifDB.add(new Nif("48152635A"));
-        this.mobilePhoneDB.add("666666660");
+        nifDB.add(new Nif("48152635A"));
+        mobilePhoneDB.add("666666660");
 
-        this.nifDB.add(new Nif("48152679B"));
-        this.mobilePhoneDB.add(null);
+        nifDB.add(new Nif("48152679B"));
+        mobilePhoneDB.add(null);
 
-        this.nifDB.add(new Nif("48152603C"));
-        this.mobilePhoneDB.add("666984722");
+        nifDB.add(new Nif("48152603C"));
+        mobilePhoneDB.add("666984722");
 
-        this.nifDB.add(new Nif("12345678Z"));
-        this.mobilePhoneDB.add("66666666");
-
+        nifDB.add(new Nif("12345678Z"));
+        mobilePhoneDB.add("66666666");
     }
 
     @Override
@@ -56,6 +55,7 @@ public class CertificationAuthoriryDoble implements CertificationAuthority {
         if (mobilePhoneDB.get(nifDB.indexOf(nif)) == null) {
             throw new AnyMobileRegisteredException("No existeix cap mòbil registrat");
         }
+
         if(nif.equals(new Nif("12345678Z"))){
             return false;
         }
@@ -66,12 +66,6 @@ public class CertificationAuthoriryDoble implements CertificationAuthority {
 
     @Override
     public boolean checkPIN(Nif nif, PINcode pin) throws NotValidPINException, ConnectException {
-        int flag = -1;
-        for (int i = 0; i < nifDB.size(); i++) {
-            if (nif.getNif().equals(nifDB.get(i).getNif())) {
-                flag = i;
-            }
-        }
         if (!pin.getPINcode().equals(this.pin.getPINcode())){
             throw new NotValidPINException("PIN no vàlid");
         }

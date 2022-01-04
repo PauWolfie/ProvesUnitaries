@@ -38,7 +38,7 @@ public class UnifiedPlatform {
     private SS ss;
     private Nif nifAct;
     private Date valDateAct;
-    Password pswd;
+    private Password pswd;
     private String currentAAPP = null;
     private PDFDocument doc;
 
@@ -59,9 +59,7 @@ public class UnifiedPlatform {
     }
 
     public void enterKeyWords(String keyWord) throws AnyKeyWordProcedureException {
-        Scanner sc = new Scanner(System.in);
-        String keyword = sc.nextLine();
-        String aapp = searchKeyWords(keyword);
+        String aapp = searchKeyWords(keyWord);
         if (aapp == null) {
             throw new AnyKeyWordProcedureException("No s'ha trobat cap coincidencia");
         } else {

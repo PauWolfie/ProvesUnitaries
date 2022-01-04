@@ -11,6 +11,7 @@ import services.SSDoble;
 import services.exceptions.AnyMobileRegisteredException;
 import services.exceptions.IncorrectValDateException;
 import services.exceptions.NifNotRegisteredException;
+import services.exceptions.NotValidCredException;
 import unifiedPlatform.UnifiedPlatform;
 import unifiedPlatform.exceptions.AnyKeyWordProcedureException;
 
@@ -55,8 +56,6 @@ public class UnifiedPlatformTest {
                     exec.enterNIF_PINobt(nif,date);
                 });
 
-        assertEquals("Error al enviar pin", exception.getMessage());
-        assertEquals("Error al enviar pin", exception.getMessage());
         assertEquals("Error al enviar pin", exception.getMessage());
     }
 
