@@ -19,7 +19,7 @@ public class SSTest {
     @BeforeEach
     void setSs() throws EmptyException, WrongFormedException {
         ss = new SSDoble();
-        nif = new Nif("48052867W");
+        nif = new Nif("48152635A");
     }
 
     @Test

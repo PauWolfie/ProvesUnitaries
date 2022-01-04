@@ -3,17 +3,25 @@ package dataTest;
 import data.DocPath;
 import data.exceptions.EmptyException;
 import data.exceptions.WrongFormedException;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class DocPathTest implements DataTestInterface {
+    DocPath path;
+    DocPath path2;
 
+    @BeforeEach
+    void setPath() throws EmptyException, WrongFormedException {
+        path = new DocPath("Test/");
+        path2 = new DocPath("src/");
+
+    }
     @Test
     public void correctTest() throws WrongFormedException, EmptyException {
-        DocPath path = new DocPath("EmulatedDirectory/");
-        assertEquals("EmulatedDirectory/", path.getPath());
+        assertEquals("Test/", path.getPath());
     }
 
 
@@ -21,11 +29,11 @@ public class DocPathTest implements DataTestInterface {
     public void emptyTest() {
         Throwable exception1 = assertThrows(EmptyException.class,
                 () -> {
-                    DocPath path = new DocPath("");
+                    path = new DocPath("");
                 });
         Throwable exception2 = assertThrows(NullPointerException.class,
                 () -> {
-                    DocPath doc = new DocPath(null);
+                    path = new DocPath(null);
                 });
 
         assertEquals("El directori no pot estar buit", exception1.getMessage());
@@ -36,18 +44,16 @@ public class DocPathTest implements DataTestInterface {
     public void wrongFormatTest() {
         Throwable exception = assertThrows(WrongFormedException.class,
                 () -> {
-                    DocPath doc = new DocPath("No existeixo");
+                    path = new DocPath("No existeixo");
                 });
         assertEquals("El directori no existeix", exception.getMessage());
     }
 
     @Test
     public void compareTest() throws WrongFormedException, EmptyException {
-        DocPath path1 = new DocPath("src/");
-        DocPath path2 = new DocPath("EmulatedDirectory/");
 
-        assertEquals(path1, path1);
-        assertNotEquals("src/", path1);
-        assertNotEquals(path1, path2);
+        assertEquals(path, path);
+        assertNotEquals("src/", path);
+        assertNotEquals(path, path2);
     }
 }

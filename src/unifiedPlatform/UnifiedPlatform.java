@@ -169,6 +169,9 @@ public class UnifiedPlatform {
         }
 
         return aapps[indexOfAAPP];
+
+         */
+    return null;
     }
 
     public static double similarity(String s1, String s2) {
@@ -183,6 +186,7 @@ public class UnifiedPlatform {
         }
         return (bigLen - computeEditDistance(s1, s2)) / (double) bigLen;
     }
+
 
     public static int computeEditDistance(String s1, String s2) {
         s1 = s1.toLowerCase();
@@ -211,7 +215,6 @@ public class UnifiedPlatform {
         PDFDocument document = new PDFDocument(new Date(), path, new File(path.getPath()));
         document.openDoc(document.getPath());
     }
-
 
     //NO CAL IMPLEMENTAR
     private void selectPath(DocPath path) throws BadPathException {

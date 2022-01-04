@@ -35,6 +35,9 @@ public class CertificationAuthoriryDoble implements CertificationAuthority {
 
         nifDB.add(new Nif("12345678Z"));
         mobilePhoneDB.add("66666666");
+
+        nifDB.add(new Nif("87654321A"));
+        mobilePhoneDB.add("666666660");
     }
 
     @Override
@@ -73,6 +76,9 @@ public class CertificationAuthoriryDoble implements CertificationAuthority {
         if (nif.getNif().equals(nifDB.get(2).getNif())) {
             throw new ConnectException("No s'ha pogut establir connexió");
         }
+        if (nif.equals(nifDB.get(nifDB.size() - 1))){
+            return false;
+        }
         return true;
     }
 
@@ -93,6 +99,11 @@ public class CertificationAuthoriryDoble implements CertificationAuthority {
         if (!passw.getPswd().equals(this.pass.getPswd())) {
             throw new NotValidCredException("Les credenciasls no son vàlides");
         }
+
+        if (nif.equals(nifDB.get(nifDB.size() - 1))){
+            return -1;
+        }
+
         return 0;
     }
 }

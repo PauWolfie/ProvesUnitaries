@@ -8,16 +8,21 @@ import data.exceptions.WrongFormedException;
 import services.exceptions.NotAffiliatedException;
 
 import java.net.ConnectException;
+import java.util.LinkedList;
+import java.util.List;
 
 public class SSDoble implements SS {
-    Nif nif = new Nif("48052867W");
+    List<Nif> nifDB = new LinkedList();
+
 
     public SSDoble() throws EmptyException, WrongFormedException {
+        nifDB.add(new Nif("48152635A"));
+        nifDB.add(new Nif("87654321A"));
     }
 
     @Override
     public LaboralLifeDoc getLaboralLife(Nif nif) throws NotAffiliatedException, ConnectException {
-        if (!this.nif.getNif().equals(nif.getNif())) {
+        if (!nifDB.contains(nif)) {
             throw new NotAffiliatedException("El NIF no està registrat a la seguretat social");
         }
         return null;
@@ -25,7 +30,7 @@ public class SSDoble implements SS {
 
     @Override
     public MemberAccreditationDoc getMembAccred(Nif nif) throws NotAffiliatedException, ConnectException {
-        if (!this.nif.getNif().equals(nif.getNif())) {
+        if (!nifDB.contains(nif)) {
             throw new NotAffiliatedException("El NIF no està registrat a la seguretat social");
         }
         return null;
